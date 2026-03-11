@@ -1,1 +1,1 @@
-export { cryptoApi } from './cryptoInstance';
+export { cryptoApi } from './cryptoApi';
