@@ -21,7 +21,7 @@ export const SearchCoin = ({onAdd}: SearchCoinProps) => {
     <div>
       <SearchInput
         value={query}
-        onChange={setQuery}
+        onSearch={setQuery}
       />
       <Button onClick={handleSearch} disabled={isPending}>
         {isPending ? 'Searching...' : 'Search'}
