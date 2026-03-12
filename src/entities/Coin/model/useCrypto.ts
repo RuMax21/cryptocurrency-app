@@ -28,8 +28,8 @@ export const useCrypto = () => {
     queryClient.invalidateQueries({ queryKey: ['prices'] });
   }
 
-  const updateOne = (id: string) => {
-    queryClient.invalidateQueries({ queryKey: ['prices', id] })
+  const updateOne = () => {
+    queryClient.invalidateQueries({ queryKey: ['prices', coinIds] })
   }
 
   return { data, isLoading, isError, addCoin, deleteCoin, updateAll, updateOne };
