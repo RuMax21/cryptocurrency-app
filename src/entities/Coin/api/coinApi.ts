@@ -26,3 +26,18 @@ export const getCoin = async (query: string): Promise<CoinSymbol> => {
 
   return query.toUpperCase();
 }
+
+export const searchCoins = async (query: string) => {
+  const {data} = await cryptoApi.get('/data/all/coinlist', {
+    params: {
+      summary: true
+    },
+  });
+
+  const coins = Object.values(data.Data) as { Symbol: string; FullName: string }[];
+
+  return coins.filter(coin => 
+    coin.Symbol.toLowerCase().includes(query.toLowerCase()) ||
+    coin.FullName.toLowerCase().includes(query.toLowerCase())
+  ).slice(0, 10);
+}
