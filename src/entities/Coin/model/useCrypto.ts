@@ -13,7 +13,7 @@ export const useCrypto = () => {
     queryKey: ['prices', coinIds],
     queryFn: async () => {
       const newData = await getPrices(coinIds);
-      setPrevData(data ?? null);
+      setPrevData(prev => ({...prev, ...data}));
       return newData;
     },
     refetchInterval: REFETCH_INTERVAL,
