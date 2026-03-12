@@ -1,0 +1,31 @@
+.chip {
+  display: inline-flex;
+  align-self: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-accent-light);
+  border: 1px solid var(--color-accent);
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: var(--color-accent);
+  }
+}
+
+.label {
+  color: var(--color-text-primary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.remove {
+  display: flex;
+  align-self: center;
+  color: var(--color-down);
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--color-down);
+  }
+}

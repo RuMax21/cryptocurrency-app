@@ -1,13 +1,6 @@
 import { createColumnHelper } from '@tanstack/react-table';
 import type { CoinRow } from './types';
-import {
-  Minus,
-  RefreshCw,
-  Trash2,
-  TrendingDown,
-  TrendingUp,
-} from 'lucide-react';
-import { Button } from '@/shared/ui';
+import { Minus, TrendingDown, TrendingUp } from 'lucide-react';
 import { CoinActions } from '../ui/CoinActions/CoinActions';
 
 const columnHelper = createColumnHelper<CoinRow>();

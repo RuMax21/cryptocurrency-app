@@ -14,6 +14,9 @@ export interface CryptoTableProps {
 export interface CryptoToolbarProps {
   onAdd: (id: string) => void;
   onUpdateAll: () => void;
+  history: string[];
+  onSelect: (id: string) => void;
+  onRemoveFromHistory: (id: string) => void;
 }
 
 export interface CoinActionsProps {
