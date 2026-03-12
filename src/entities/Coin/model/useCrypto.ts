@@ -1,15 +1,21 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { DEFAULT_CRYPTO, REFETCH_INTERVAL } from "./constants"
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getPrices } from "../api";
+import type { PricesResponse } from "./types";
 
 export const useCrypto = () => {
   const [coinIds, setCoinIds] = useState<string[]>([DEFAULT_CRYPTO]);
   const queryClient = useQueryClient();
+  const [prevData, setPrevData] = useState<PricesResponse | null>(null);
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['prices', coinIds],
-    queryFn: () => getPrices(coinIds),
+    queryFn: async () => {
+      const newData = await getPrices(coinIds);
+      setPrevData(data ?? null);
+      return newData;
+    },
     refetchInterval: REFETCH_INTERVAL,
   });
 
@@ -32,5 +38,5 @@ export const useCrypto = () => {
     queryClient.invalidateQueries({ queryKey: ['prices', coinIds] })
   }
 
-  return { data, isLoading, isError, addCoin, deleteCoin, updateAll, updateOne };
+  return { data, prevData, isLoading, isError, addCoin, deleteCoin, updateAll, updateOne };
 }
