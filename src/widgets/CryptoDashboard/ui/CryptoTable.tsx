@@ -1,7 +1,7 @@
-import { flexRender } from "@tanstack/react-table";
-import type { CryptoTableProps } from "../model";
+import { flexRender } from '@tanstack/react-table';
+import type { CryptoTableProps } from '../model';
 
-export const CryptoTable = ({table}: CryptoTableProps) => (
+export const CryptoTable = ({ table }: CryptoTableProps) => (
   <table>
     <thead>
       {table.getHeaderGroups().map(headerGroup => (
@@ -26,4 +26,4 @@ export const CryptoTable = ({table}: CryptoTableProps) => (
       ))}
     </tbody>
   </table>
-)
+);

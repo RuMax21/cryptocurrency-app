@@ -1,5 +1,5 @@
-import { HomePage } from "../pages/HomePage";
-import { QueryProvider } from "./providers/QueryProvider"
+import { HomePage } from '../pages/HomePage';
+import { QueryProvider } from './providers/QueryProvider';
 
 export const App = () => (
   <QueryProvider>

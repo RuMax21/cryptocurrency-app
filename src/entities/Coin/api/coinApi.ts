@@ -1,6 +1,6 @@
-import { cryptoApi } from "@/shared/api";
-import type { CoinSymbol, PricesResponse } from "../model";
-import { BASE_CURRENCY } from "../model";
+import { cryptoApi } from '@/shared/api';
+import type { CoinSymbol, PricesResponse } from '../model';
+import { BASE_CURRENCY } from '../model';
 
 export const getPrices = async (ids: CoinSymbol[]): Promise<PricesResponse> => {
   const { data } = await cryptoApi.get('/data/pricemulti', {
@@ -10,7 +10,7 @@ export const getPrices = async (ids: CoinSymbol[]): Promise<PricesResponse> => {
     },
   });
   return data;
-}
+};
 
 export const getCoin = async (query: string): Promise<CoinSymbol> => {
   const { data } = await cryptoApi.get('/data/pricemulti', {
@@ -18,26 +18,32 @@ export const getCoin = async (query: string): Promise<CoinSymbol> => {
       fsyms: query.toUpperCase(),
       tsyms: BASE_CURRENCY,
     },
-  })
+  });
 
   if (data.Response === 'Error') {
     throw new Error('Coin not found');
   }
 
   return query.toUpperCase();
-}
+};
 
 export const searchCoins = async (query: string) => {
-  const {data} = await cryptoApi.get('/data/all/coinlist', {
+  const { data } = await cryptoApi.get('/data/all/coinlist', {
     params: {
-      summary: true
+      summary: true,
     },
   });
 
-  const coins = Object.values(data.Data) as { Symbol: string; FullName: string }[];
+  const coins = Object.values(data.Data) as {
+    Symbol: string;
+    FullName: string;
+  }[];
 
-  return coins.filter(coin => 
-    coin.Symbol.toLowerCase().includes(query.toLowerCase()) ||
-    coin.FullName.toLowerCase().includes(query.toLowerCase())
-  ).slice(0, 10);
-}
+  return coins
+    .filter(
+      coin =>
+        coin.Symbol.toLowerCase().includes(query.toLowerCase()) ||
+        coin.FullName.toLowerCase().includes(query.toLowerCase()),
+    )
+    .slice(0, 10);
+};

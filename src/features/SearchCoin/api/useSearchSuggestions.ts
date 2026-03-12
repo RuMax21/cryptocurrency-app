@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query"
-import { searchCoins } from "../../../entities/Coin/api"
+import { useQuery } from '@tanstack/react-query';
+import { searchCoins } from '../../../entities/Coin/api';
 
 export const useSearchSuggestions = (query: string) => {
   return useQuery({
@@ -8,4 +8,4 @@ export const useSearchSuggestions = (query: string) => {
     enabled: query.length > 2,
     staleTime: Infinity,
   });
-}
+};

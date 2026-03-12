@@ -1,7 +1,7 @@
-import { createColumnHelper } from "@tanstack/react-table";
-import type { CoinRow } from "./types";
-import { Minus, TrendingDown, TrendingUp } from "lucide-react";
-import { Button } from "@/shared/ui";
+import { createColumnHelper } from '@tanstack/react-table';
+import type { CoinRow } from './types';
+import { Minus, TrendingDown, TrendingUp } from 'lucide-react';
+import { Button } from '@/shared/ui';
 
 const columnHelper = createColumnHelper<CoinRow>();
 
@@ -25,7 +25,7 @@ export const getColumns = (
       if (price > prevPrice) return <TrendingUp color="green" />;
       if (price < prevPrice) return <TrendingDown color="red" />;
       return <Minus />;
-    }
+    },
   }),
   columnHelper.display({
     id: 'action',
@@ -37,4 +37,4 @@ export const getColumns = (
       </div>
     ),
   }),
-]
+];

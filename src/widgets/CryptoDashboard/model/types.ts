@@ -1,5 +1,5 @@
-import type { Table } from "@tanstack/react-table";
-import type { CoinSymbol } from "@/entities/Coin";
+import type { Table } from '@tanstack/react-table';
+import type { CoinSymbol } from '@/entities/Coin';
 
 export interface CoinRow {
   id: CoinSymbol;
