@@ -3,7 +3,8 @@ import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import { useCrypto } from '@/entities/Coin';
 import { getColumns, type CoinRow } from './model';
 import { CryptoTable, CryptoToolbar } from './ui';
-import type { PricesResponse } from '../../entities/Coin';
+import type { PricesResponse } from '@/entities/Coin';
+import styles from './CryptoDashboard.module.scss';
 
 export const CryptoDashboard = () => {
   const {
@@ -41,9 +42,11 @@ export const CryptoDashboard = () => {
   if (isError) return <p>Error fetching prices</p>;
 
   return (
-    <section>
+    <section className={styles.dashboard}>
       <CryptoToolbar onAdd={addCoin} onUpdateAll={updateAll} />
-      <CryptoTable table={table} />
+      <div className={styles.tableWrapper}>
+        <CryptoTable table={table} />
+      </div>
     </section>
   );
 };

@@ -1,0 +1,18 @@
+.button {
+  padding: 8px 18px;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-accent);
+  color: var(--color-text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-accent-hover);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

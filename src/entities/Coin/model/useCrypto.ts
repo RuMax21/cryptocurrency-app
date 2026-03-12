@@ -17,6 +17,7 @@ export const useCrypto = () => {
       return newData;
     },
     refetchInterval: REFETCH_INTERVAL,
+    placeholderData: previousData => previousData,
   });
 
   const addCoin = (id: string) => {

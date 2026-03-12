@@ -1,2 +1,2 @@
-export { CryptoTable } from './CryptoTable';
-export { CryptoToolbar } from './CryptoToolbar';
+export { CryptoTable } from './CryptoTable/CryptoTable';
+export { CryptoToolbar } from './CryptoToolbar/CryptoToolbar';

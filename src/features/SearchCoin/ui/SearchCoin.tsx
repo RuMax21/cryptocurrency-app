@@ -26,32 +26,34 @@ export const SearchCoin = ({ onAdd }: SearchCoinProps) => {
 
   return (
     <div className={styles.wrapper}>
-      <SearchInput
-        value={query}
-        onSearch={(value: string) => {
-          setQuery(value);
-          setShowSuggestions(true);
-        }}
-      />
+      <div className={styles.inputWrapper}>
+        <SearchInput
+          value={query}
+          onSearch={(value: string) => {
+            setQuery(value);
+            setShowSuggestions(true);
+          }}
+        />
+        {isError && <p className={styles.error}>{error.message}</p>}
+
+        {showSuggestions && suggestions && suggestions.length > 0 && (
+          <ul className={styles.suggestions}>
+            {suggestions.map(coin => (
+              <li
+                key={coin.Symbol}
+                className={styles.suggestion}
+                onClick={() => handleSelect(coin.Symbol)}
+              >
+                {coin.Symbol} - {coin.FullName}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
       <Button onClick={() => mutate(query)} disabled={isPending}>
         {isPending ? 'Searching...' : 'Search'}
       </Button>
-
-      {showSuggestions && suggestions && suggestions.length > 0 && (
-        <ul className={styles.suggestions}>
-          {suggestions.map(coin => (
-            <li
-              key={coin.Symbol}
-              className={styles.suggestion}
-              onClick={() => handleSelect(coin.Symbol)}
-            >
-              {coin.Symbol} - {coin.FullName}
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {isError && <p>{error.message}</p>}
     </div>
   );
 };

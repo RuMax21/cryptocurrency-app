@@ -1,7 +1,14 @@
 import { createColumnHelper } from '@tanstack/react-table';
 import type { CoinRow } from './types';
-import { Minus, TrendingDown, TrendingUp } from 'lucide-react';
+import {
+  Minus,
+  RefreshCw,
+  Trash2,
+  TrendingDown,
+  TrendingUp,
+} from 'lucide-react';
 import { Button } from '@/shared/ui';
+import { CoinActions } from '../ui/CoinActions/CoinActions';
 
 const columnHelper = createColumnHelper<CoinRow>();
 
@@ -31,10 +38,10 @@ export const getColumns = (
     id: 'action',
     header: 'Actions',
     cell: ({ row }) => (
-      <div>
-        <Button onClick={onUpdate}>Update</Button>
-        <Button onClick={() => onDelete(row.original.id)}>Delete</Button>
-      </div>
+      <CoinActions
+        onUpdate={onUpdate}
+        onDelete={() => onDelete(row.original.id)}
+      />
     ),
   }),
 ];

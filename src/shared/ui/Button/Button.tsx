@@ -1,4 +1,5 @@
 import type { ButtonProps } from './types';
+import styles from './Button.module.scss';
 
 export const Button = ({
   className,
@@ -6,7 +7,11 @@ export const Button = ({
   disabled = false,
   onClick,
 }: ButtonProps) => (
-  <button className={className} onClick={onClick} disabled={disabled}>
+  <button
+    className={`${styles.button} ${className}`}
+    onClick={onClick}
+    disabled={disabled}
+  >
     {children}
   </button>
 );

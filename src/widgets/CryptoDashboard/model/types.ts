@@ -15,3 +15,8 @@ export interface CryptoToolbarProps {
   onAdd: (id: string) => void;
   onUpdateAll: () => void;
 }
+
+export interface CoinActionsProps {
+  onUpdate: () => void;
+  onDelete: () => void;
+}
