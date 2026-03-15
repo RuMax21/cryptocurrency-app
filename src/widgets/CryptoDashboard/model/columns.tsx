@@ -1,13 +1,13 @@
 import { createColumnHelper } from '@tanstack/react-table';
 import type { CoinRow } from './types';
-import { Minus, TrendingDown, TrendingUp } from 'lucide-react';
 import { CoinActions } from '../ui/CoinActions/CoinActions';
+import { TrendCell } from '../ui/TrendCell/TrendCell';
 
 const columnHelper = createColumnHelper<CoinRow>();
 
 export const getColumns = (
   onDelete: (id: string) => void,
-  onUpdate: () => void,
+  onUpdate: (id: string) => void,
 ) => [
   columnHelper.accessor('id', {
     header: 'Coin',
@@ -19,20 +19,14 @@ export const getColumns = (
   }),
   columnHelper.accessor('prevPrice', {
     header: 'Trend',
-    cell: ({ row }) => {
-      const { price, prevPrice } = row.original;
-      if (!prevPrice) return <Minus />;
-      if (price > prevPrice) return <TrendingUp color="green" />;
-      if (price < prevPrice) return <TrendingDown color="red" />;
-      return <Minus />;
-    },
+    cell: ({ row }) => <TrendCell {...row.original} />,
   }),
   columnHelper.display({
     id: 'action',
     header: 'Actions',
     cell: ({ row }) => (
       <CoinActions
-        onUpdate={onUpdate}
+        onUpdate={() => onUpdate(row.original.id)}
         onDelete={() => onDelete(row.original.id)}
       />
     ),
