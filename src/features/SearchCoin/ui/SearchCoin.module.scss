@@ -1,0 +1,41 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: 4px 0;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.suggestion {
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-bg-hover);
+    color: var(--color-text-primary);
+  }
+}
+
+.error {
+  font-size: 12px;
+  color: var(--color-down);
+  margin-top: 4px;
+}

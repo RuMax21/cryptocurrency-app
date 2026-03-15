@@ -1,10 +1,8 @@
-function App() {
+import { HomePage } from '../pages/HomePage';
+import { QueryProvider } from './providers/QueryProvider';
 
-  return (
-    <>
-     
-    </>
-  )
-}
-
-export default App
+export const App = () => (
+  <QueryProvider>
+    <HomePage />
+  </QueryProvider>
+);
