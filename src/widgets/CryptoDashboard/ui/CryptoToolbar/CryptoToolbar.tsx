@@ -1,5 +1,5 @@
 import { SearchCoin } from '@/features/SearchCoin/ui/SearchCoin';
-import type { CryptoToolbarProps } from '../model';
+import type { CryptoToolbarProps } from '../../model';
 import { Button } from '@/shared/ui';
 import styles from './CryptoToolbar.module.scss';
 import { Chip } from '@/shared/ui';
@@ -18,7 +18,7 @@ export const CryptoToolbar = ({
     </div>
     {history.length > 0 && (
       <div className={styles.chips}>
-        {history.map(id => (
+        {history.map((id: string) => (
           <Chip
             key={id}
             label={id}

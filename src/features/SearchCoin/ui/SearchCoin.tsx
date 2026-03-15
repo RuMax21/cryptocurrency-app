@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './SearchCoin.module.scss';
-import type { SearchCoinProps } from '../model';
+// import type { SearchCoinProps } from '../model';
 import { useSearchCoin } from '../api/useSearchCoin';
 import { SearchInput } from '@/shared/ui';
 import { Button } from '@/shared/ui';

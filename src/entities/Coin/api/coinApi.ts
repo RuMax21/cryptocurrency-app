@@ -28,22 +28,20 @@ export const getCoin = async (query: string): Promise<CoinSymbol> => {
 };
 
 export const searchCoins = async (query: string) => {
-  const { data } = await cryptoApi.get('/data/all/coinlist', {
-    params: {
-      summary: true,
-    },
-  });
+  const { data } = await cryptoApi.get('/data/all/coinlist');
 
   const coins = Object.values(data.Data) as {
     Symbol: string;
     FullName: string;
+    IsTrading: boolean;
   }[];
 
   return coins
     .filter(
       coin =>
-        coin.Symbol.toLowerCase().includes(query.toLowerCase()) ||
-        coin.FullName.toLowerCase().includes(query.toLowerCase()),
+        coin.IsTrading &&
+        (coin.Symbol.toLowerCase().includes(query.toLowerCase()) ||
+          coin.FullName.toLowerCase().includes(query.toLowerCase())),
     )
     .slice(0, 10);
 };
