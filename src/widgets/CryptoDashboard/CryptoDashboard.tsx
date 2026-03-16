@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
-import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import { useCrypto } from '@/entities/Coin';
 import { getColumns, type CoinRow } from './model';
-import { CryptoTable, CryptoToolbar } from './ui';
+import { CryptoToolbar } from './ui';
 import type { PricesResponse } from '@/entities/Coin';
 import styles from './CryptoDashboard.module.scss';
 import { useSearchHistory } from '../../shared/hooks';
+import { Table } from '@/shared/ui/Table';
 
 export const CryptoDashboard = () => {
   const {
@@ -35,12 +35,6 @@ export const CryptoDashboard = () => {
     [deleteCoin, updateOne],
   );
 
-  const table = useReactTable({
-    data: rows,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-  });
-
   const handleAdd = (id: string) => {
     addCoin(id);
     addToHistory(id);
@@ -62,7 +56,7 @@ export const CryptoDashboard = () => {
         {rows.length === 0 ? (
           <p className={styles.empty}>List is empty</p>
         ) : (
-          <CryptoTable table={table} />
+          <Table rows={rows} columns={columns} />
         )}
       </div>
     </section>
