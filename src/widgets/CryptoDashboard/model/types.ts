@@ -23,3 +23,8 @@ export interface CoinActionsProps {
   onUpdate: () => void;
   onDelete: () => void;
 }
+
+export interface TrendCellProps {
+  price: number;
+  prevPrice: number | null;
+}

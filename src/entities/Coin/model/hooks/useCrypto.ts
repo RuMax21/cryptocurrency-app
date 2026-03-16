@@ -36,8 +36,15 @@ export const useCrypto = () => {
     queryClient.invalidateQueries({ queryKey: ['prices'] });
   };
 
-  const updateOne = () => {
-    queryClient.invalidateQueries({ queryKey: ['prices', coinIds] });
+  const updateOne = async (id: string) => {
+    const newData = await getPrices([id]);
+    queryClient.setQueryData(
+      ['prices', coinIds],
+      (oldData: PricesResponse) => ({
+        ...oldData,
+        ...newData,
+      }),
+    );
   };
 
   return {
